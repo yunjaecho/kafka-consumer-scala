@@ -1,5 +1,10 @@
 package com.yunjae.consumer
 
+/**
+  * brokers : localhost:9092
+  * topic : first
+  * groupId : sample
+  */
 object Main extends App {
   val scanner = new java.util.Scanner(System.in)
   print("brokers : ")
@@ -11,8 +16,6 @@ object Main extends App {
 
   scanner.close()
 
-  val consumer = new Consumer(brokers = brokers, topic = topic, groupId = groupId)
-  consumer.receiveMessages()
-
-
+  val topicConsumer = new Consumer(brokers = brokers, topic = topic, groupId = groupId)
+  topicConsumer.run()
 }
